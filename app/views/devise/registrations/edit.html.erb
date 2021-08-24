@@ -1,41 +1,50 @@
-<h3 class="text-center text-primary">Edit Porfile</h3>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="m-3">
-    <%= f.label :email, class:"form-label" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"example@zyx.com" %>
+<div class="card">
+  <div class="card-header text-center">
+    <h3>Edit Profile</h3>
   </div>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <div class="m-3">
+        <%= f.label :email, class:"form-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control", placeholder:"Email", :required => true %>
+      </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+      <div class="m-3">
+          <%= f.label :password ,class:"form-label"%> <i class="form-label text-danger">(leave blank if you don't want to change it)</i>
+          <%= f.password_field :password, autocomplete: "new-password",class:"form-control", placeholder:"Password" %>
+          <% if @minimum_password_length %>
+            <em class="text-danger"><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div>
 
-  <div class="m-3">
-    <%= f.label :password, class:"form-label" %> <i class="text-info">(leave blank if you don't want to change it)</i>
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
-    <% if @minimum_password_length %>
-      <em class="text-danger"><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+        <div class="m-3">
+          <%= f.label :password_confirmation, class:"form-label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Password", :required => true %>
+        </div>
+
+        <div class="m-3">
+          <%= f.label :current_password, class:"form-label" %> <i class="form-label text-danger">(we need your current password to confirm your changes)</i>
+          <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
+        </div>      
+
+        <div class="m-3">
+          <%= f.submit "Update", class:"btn btn-primary rounded-pill" %>
+        </div>
+      <% end %>      
   </div>
-
-  <div class="m-3">
-    <%= f.label :password_confirmation, class:"form-label" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+</div>
+<div class="card mt-3">
+  <div class="card-header text-center">
+    <h4>Delete Account</h4>
   </div>
-
-  <div class="m-3">
-    <%= f.label :current_password, class:"form-label" %> <i class="text-info">(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
+  <div class="card-body" style="width: 10rem;">
+    <%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class:"btn btn-danger rounded-pill" %>
+    
   </div>
+</div>
+<%= link_to "Back", :back,  class:"btn btn-secondary mt-2 rounded-pill" %>
 
-  <div class="m-3">
-    <%= f.submit "Update" , class:"btn btn-primary rounded-pill" %>
-  </div>
-<% end %>
-
-<h3 class="text-warning">Delete account</h3>
-  <%= button_to "Cancel my account",class:"btn btn-danger rounded-pill" registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-
-<%= link_to "Back", :back %>
