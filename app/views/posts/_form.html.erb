@@ -1,0 +1,62 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_area :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ingredients %>
+    <%= form.text_area :ingredients %>
+  </div>
+
+  <div class="field">
+    <%= form.label :method %>
+    <%= form.text_area :method %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prep %>
+    <%= form.number_field :prep %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cook %>
+    <%= form.number_field :cook %>
+  </div>
+
+  <div class="field">
+    <%= form.label :difficult %>
+    <%= form.text_field :difficult %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
