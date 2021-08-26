@@ -1,5 +1,7 @@
 class DashboardController < ApplicationController
-    before_action :is_admin?, only: [:new , :create, :edit, :update, :destroy]
+    before_action :is_login?
+    before_action :is_admin?, only: [:index]
+    
 
     def index
     end
@@ -9,6 +11,10 @@ class DashboardController < ApplicationController
 
     def is_admin?
       redirect_to root_path unless current_user.admin?
+    end
+
+    def is_login?
+        redirect_to root_path unless current_user
     end
 
 end
