@@ -4,6 +4,9 @@ class DashboardController < ApplicationController
     
 
     def index
+      @categories = Category.all
+      @posts = Post.all
+
     end
 
 
