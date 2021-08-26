@@ -44,15 +44,15 @@
                         <td><%= post.title %></td>
                         <td><%= post.image %></td>
                         <td><%= post.description %></td>
-                        <td><%= post.category %></td>
+                        <td><%= @categories.find(post.category).name %></td>
                         <td><%= post.ingredients %></td>
                         <td><%= post.method %></td>
                         <td><%= post.prep %></td>
                         <td><%= post.cook %></td>
                         <td><%= post.difficult %></td>
-                        <td><%= link_to 'Show', post %></td>
+                        <td><%= link_to 'View', post %></td>
                         <td><%= link_to 'Edit', edit_post_path(post) %></td>
-                        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                     </tr>
                     <% end %>
                 </tbody>
