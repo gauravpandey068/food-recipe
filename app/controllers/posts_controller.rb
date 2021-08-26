@@ -6,19 +6,25 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+    @categories = Category.all
+
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    @categories = Category.all
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+    @categories = Category.all
+
   end
 
   # GET /posts/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /posts or /posts.json
@@ -53,7 +59,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
+      format.html { redirect_to dashboard_index_path, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end
