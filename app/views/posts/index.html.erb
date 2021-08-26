@@ -24,7 +24,7 @@
         <td><%= post.title %></td>
         <td><%= post.image %></td>
         <td><%= post.description %></td>
-        <td><%= post.category %></td>
+        <td><%= @categories.find(post.category).name %></td>
         <td><%= post.ingredients %></td>
         <td><%= post.method %></td>
         <td><%= post.prep %></td>

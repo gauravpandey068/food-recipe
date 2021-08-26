@@ -26,9 +26,10 @@
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
+  
+  <div class="filed">
     <%= form.label :category %>
-    <%= form.text_field :category %>
+    <%= form.collection_select :category, @categories.all, :id, :name, { class: 'chosen-select'} %>
   </div>
 
   <div class="field">

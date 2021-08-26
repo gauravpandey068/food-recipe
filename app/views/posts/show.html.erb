@@ -17,7 +17,7 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @post.category %>
+  <%= @categories.find(@post.category).name %>
 </p>
 
 <p>
