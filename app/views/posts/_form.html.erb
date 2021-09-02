@@ -1,63 +1,57 @@
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
+     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <ul class="list-group">
         <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="list-group-item list-group-item-danger"><strong>*</strong> <%= error.full_message %></li>
         <% end %>
       </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
   
-  <div class="filed">
-    <%= form.label :category %>
-    <%= form.collection_select :category, @categories.all, :id, :name, { class: 'chosen-select'} %>
+  <div class="m-3">
+    <label class="form-label">Recipe Name</label>
+    <%= form.text_field :title, placeholder:"Recipe Name", class:"form-control", :required => true %>
+  </div>
+   <div class="m-3">
+    <label class="form-label">Category</label>
+    <%= form.collection_select :category, @categories.all, :id, :name, { class: 'chosen-select'}, class:"form-select" %>
   </div>
 
-  <div class="field">
-    <%= form.label :ingredients %>
-    <%= form.text_area :ingredients %>
+  <div class="m-3">
+   <label class="form-label">Preparation Time (in minute)</label>
+    <%= form.number_field :prep, placeholder:"Recipe preprations time in minute", class:"form-control", :required => true %>
+  </div>
+  <div class="m-3">
+    <label class="form-label">Cooking Time (in minute)</label>
+    <%= form.number_field :cook, placeholder:"Recipe cook time in minute", class:"form-control", :required => true %>
+  </div>
+  <div class="m-3">
+    <label class="form-label">Cooking Difficult</label>
+    <%= form.text_field :difficult, placeholder:"Recipe Cooking difficult", class:"form-control", :required => true %>
+  </div>
+  <div class="m-3">
+    <%= form.label :image %>
+    <%= form.file_field :image, class:"form-control", :required => true %>
   </div>
 
-  <div class="field">
-    <%= form.label :method %>
-    <%= form.text_area :method %>
+  <div class="m-3">
+    <%= form.label :description, class:"form-label" %>
+    <%= form.text_area :description,  placeholder:"Recipe description", class:"form-control", :required => true %>
+  </div>
+  <div class="m-3">
+    <%= form.label :ingredients, class:"form-label" %>
+    <%= form.text_area :ingredients,  placeholder:"Recipe ingredients", class:"form-control", :required => true %>
+  </div>
+  <div class="m-3">
+    <%= form.label :method, class:"form-label" %>
+    <%= form.text_area :method,  placeholder:"Recipe method", class:"form-control", :required => true %>
   </div>
 
-  <div class="field">
-    <%= form.label :prep %>
-    <%= form.number_field :prep %>
+
+  <div class="m-3">
+    <%= form.submit  class:"btn btn-primary" %>
   </div>
 
-  <div class="field">
-    <%= form.label :cook %>
-    <%= form.number_field :cook %>
-  </div>
-
-  <div class="field">
-    <%= form.label :difficult %>
-    <%= form.text_field :difficult %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
