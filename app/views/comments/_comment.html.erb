@@ -1,16 +1,17 @@
-<div class="box">
-  <article class="media">
-    <div class="media-content">
-      <div class="content">
-        <p>
-            <%= @users.find(comment.user_id).email %>
-            <br/>
-            <%= comment.comment %>
+<div class="card m-1">
+      <div class="card-header bg-white">
+        <p class="fs-5 text-primary"><%= @users.find(comment.user_id).email.sub!(/@.*$/, "")  %>
+          <span class="float-end">
+             <% if user_signed_in? %>
+                <% if current_user.id == comment.user_id %>
+                  <%= link_to 'Delete', [comment.post, comment], method: :delete, class:"button is-danger", data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              <% end %>
+          </span>
         </p>
       </div>
-    </div>
-    <% if current_user.id == comment.user_id %>
-        <%= link_to 'Delete', [comment.post, comment], method: :delete, class:"button is-danger", data: { confirm: 'Are you sure?' } %>
-    <% end %>
-  </article>
+      <div class="card-body">
+        <p class="fs-5"><%= simple_format(comment.comment) %></p>
+      </div>
+   
 </div>

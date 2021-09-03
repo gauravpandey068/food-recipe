@@ -1,12 +1,11 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
+  <%= f.hidden_field :user_id , value: current_user.id %>
   <div class="m-3">
-        <%= f.text_field :user_id , value: current_user.id %>
-        <%= f.label :comment %>
-        <div class="control">
-            <%= f.text_area :comment, class:"input",  placeholder:"Leave a Message", :required => true   %>
-        </div>
+    <%= f.label :comment, class:"form-label" %>
+    <%= f.text_area :comment, class:"form-control",  placeholder:"Leave a Message", :required => true   %>
   </div>
-  <div class="field">
-       <%= f.submit  class:"button is-success" %>
+ 
+  <div class="m-3">
+       <%= f.submit  class:"btn btn-primary" %>
   </div>
 <% end %>
