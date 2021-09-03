@@ -9,5 +9,6 @@ class Post < ApplicationRecord
     validates :difficult, presence: true
 
     has_one_attached :image
+    has_many :comments
 
 end
