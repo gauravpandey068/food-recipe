@@ -1,5 +1,8 @@
-<h1>New Category</h1>
-
-<%= render 'form', category: @category %>
-
-<%= link_to 'Back', categories_path %>
+<div class="card">
+    <div class="card-header fs-4 text-center text-primary p-5">
+        Add New Category
+    </div>
+    <div card="card-body p-5">
+        <%= render 'form', category: @category %>
+    </div>
+</div>

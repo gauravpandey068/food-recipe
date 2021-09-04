@@ -1,22 +1,21 @@
 <%= form_with(model: category) do |form| %>
   <% if category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <ul class="list-group">
         <% category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="list-group-item list-group-item-danger"><strong>*</strong> <%= error.full_message %></li>
         <% end %>
       </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="m-3">
+    <%= form.label :name, class:"form-label" %>
+    <%= form.text_field :name, class:"form-control" , :required => true %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="m-3">
+    <%= form.submit class:"btn btn-primary" %>
   </div>
 <% end %>
