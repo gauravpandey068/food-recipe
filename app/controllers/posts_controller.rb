@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :is_admin?, only: [:new , :create, :edit, :update, :destroy]
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order("RANDOM()")
     @categories = Category.all
 
   end
