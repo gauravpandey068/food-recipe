@@ -1,4 +1,4 @@
-   
+<h2>All Recipe</h2>
 <div class="row">
   <% @posts.each do |post| %> 
     <div class="card m-3 p-3 card-hover" style="width: 18rem;">
@@ -16,3 +16,24 @@
    
   <% end %>
 </div>
+<% @categories.each do |category| %>
+  <h2> <%= category.name %> </h2>
+    <div class="row">
+      <% @posts.each do |post| %> 
+        <% if @categories.find(post.category).name == category.name %>
+          <div class="card m-3 p-3 card-hover" style="width: 18rem;">
+            <%= link_to post , :action => 'go' do%>
+              <div class="card-body">
+                <%= image_tag post.image, class:"card-img-top" %>   
+              </div>
+              <div class="card-footer bg-white text-dark ">
+                <p class="text-capitalize"><%= truncate(post.title) %>
+                  <span class="badge bg-info text-dark float-end"> <%= @categories.find(post.category).name %></span>
+                </p>
+              </div>
+              <% end %>
+          </div>
+        <% end %>    
+      <% end %>
+    </div>
+<% end %>
