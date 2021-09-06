@@ -2,10 +2,11 @@
   <%= f.hidden_field :user_id , value: current_user.id %>
   <div class="m-3">
     <%= f.label :comment, class:"form-label" %>
-    <%= f.text_area :comment, class:"form-control",  placeholder:"Leave a Message", :required => true   %>
+    <%= f.text_area :comment, class:"form-control",  placeholder:"Leave a Message" , :required => true  %>
   </div>
  
   <div class="m-3">
        <%= f.submit  class:"btn btn-primary" %>
   </div>
 <% end %>
+
